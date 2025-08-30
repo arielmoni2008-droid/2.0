@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cronos - Wallpapers Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(22, 33, 62, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #8a2be2, #e236ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: #8a2be2;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #a0a0c0;
+            margin-bottom: 20px;
+        }
+
+        .premium-box {
+            background: linear-gradient(145deg, #2a2a4a, #1c1c3a);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid #8a2be2;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .premium-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .premium-header h2 {
+            font-size: 1.8rem;
+            color: #ffcc00;
+        }
+
+        .premium-header i {
+            color: #ffcc00;
+            font-size: 1.5rem;
+        }
+
+        .premium-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .premium-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(138, 43, 226, 0.15);
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .premium-feature i {
+            color: #8a2be2;
+            font-size: 1.2rem;
+        }
+
+        .premium-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            margin: 20px 0;
+        }
+
+        .premium-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .premium-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #8a2be2, #6a11cb);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #6a11cb, #8a2be2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #8a2be2;
+            border: 2px solid #8a2be2;
+        }
+
+        .btn-outline:hover {
+            background: rgba(138, 43, 226, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            width: 90%;
+            max-width: 450px;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.5);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #a0a0c0;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: white;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8rem;
+            color: #8a2be2;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #a0a0c0;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: rgba(30, 30, 50, 0.7);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #8a2be2;
+        }
+
+        .modal-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #a0a0c0;
+        }
+
+        .modal-footer a {
+            color: #8a2be2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .download-process {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(30, 30, 50, 0.7);
+            border-radius: 10px;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #444;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(45deg, #8a2be2, #6a11cb);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .download-complete {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(30, 50, 30, 0.7);
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .download-complete i {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .premium-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .premium-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-crown"></i>
+                <h1>The Cronos</h1>
+            </div>
+            <p class="tagline">Wallpapers de Anime Premium em Alta Resolução</p>
+        </header>
+
+        <div class="premium-box">
+            <div class="premium-header">
+                <i class="fas fa-star"></i>
+                <h2>Wallpaper Premium Exclusivo</h2>
+            </div>
+            
+            <p>Desbloqueie este wallpaper exclusivo em resolução 4K com acesso premium!</p>
+            
+            <div class="premium-image">
+                <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Wallpaper Premium de Anime">
+            </div>
+            
+            <div class="premium-content">
+                <div class="premium-feature">
+                    <i class="fas fa-download"></i>
+                    <span>Download em 4K Ultra HD</span>
+                </div>
+                <div class="premium-feature">
+                    <i class="fas fa-unlock"></i>
+                    <span>Acesso Ilimitado</span>
+                </div>
+                <div class="premium-feature">
+                    <i class="fas fa-adjust"></i>
+                    <span>Versões Claro e Escuro</span>
+                </div>
+                <div class="premium-feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Otimizado para Todos os Dispositivos</span>
+                </div>
+            </div>
+            
+            <div class="premium-actions">
+                <button class="btn btn-primary" onclick="openLoginModal()">
+                    <i class="fas fa-download"></i> Fazer Download Premium
+                </button>
+                <button class="btn btn-outline" onclick="showFreeOption()">
+                    <i class="fas fa-images"></i> Ver Wallpapers Gratuitos
+                </button>
+            </div>
+            
+            <div class="download-process" id="downloadProcess">
+                <h3>Preparando seu download...</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <p>Seu wallpaper premium está sendo preparado para download.</p>
+            </div>
+            
+            <div class="download-complete" id="downloadComplete">
+                <i class="fas fa-check-circle"></i>
+                <h3>Download Concluído!</h3>
+                <p>Seu wallpaper premium foi baixado com sucesso.</p>
+                <button class="btn btn-outline" onclick="resetProcess()">
+                    <i class="fas fa-download"></i> Baixar Novamente
+                </button>
+            </div>
+        </div>
+        
+        <div class="login-modal" id="loginModal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+                
+                <div class="modal-header">
+                    <h2>Acesso Premium</h2>
+                    <p>Faça login para baixar wallpapers premium</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="seu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="Sua senha">
+                </div>
+                
+                <button class="btn btn-primary" onclick="startDownload()" style="width: 100%">
+                    <i class="fas fa-lock"></i> Fazer Login e Download
+                </button>
+                
+                <div class="modal-footer">
+                    <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+                    <p><a href="#">Esqueci minha senha</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funções para controle da modal de login
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+        
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+        
+        // Função para iniciar o processo de download
+        function startDownload() {
+            closeLoginModal();
+            document.getElementById('downloadProcess').style.display = 'block';
+            
+            // Simular progresso de download
+            let progress = 0;
+            const progressBar = document.getElementById('progressBar');
+            const progressInterval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    // Mostrar conclusão do download
+                    document.getElementById('downloadProcess').style.display = 'none';
+                    document.getElementById('downloadComplete').style.display = 'block';
+                }
+            }, 100);
+        }
+        
+        // Função para resetar o processo
+        function resetProcess() {
+            document.getElementById('downloadComplete').style.display = 'none';
+            document.getElementById('progressBar').style.width = '0%';
+        }
+        
+        // Função para mostrar opção gratuita
+        function showFreeOption() {
+            alert('Redirecionando para a seção de wallpapers gratuitos...');
+        }
+        
+        // Fechar modal clicando fora dela
+        window.onclick = function(event) {
+            const modal = document.getElementById('loginModal');
+            if (event.target === modal) {
+                closeLoginModal();
+            }
+        }
+    </script>
+</body>
+</html>
